@@ -2,7 +2,22 @@
 
 ## Issues Found and Fixed
 
-### 1. ✅ Room Database Column Name Conflicts (FIXED)
+### 1. ✅ Gradle Version Compatibility (FIXED)
+**Problem**: Java 21 was incompatible with Gradle 8.0. The error message indicated: "Cannot sync the project. We recommend upgrading to Gradle version 8.5 or higher."
+
+**Fix Applied**: 
+- Updated Gradle wrapper to version 8.5 (supports Java 21)
+- Updated Android Gradle Plugin from 8.1.1 to 8.2.0
+- Updated Kotlin from 1.8.10 to 1.9.20
+- Updated KSP from 1.8.10-1.0.9 to 1.9.20-1.0.14
+- Updated Compose Compiler Extension from 1.4.3 to 1.5.4
+
+**Files Modified**:
+- `gradle/wrapper/gradle-wrapper.properties`
+- `build.gradle` (root)
+- `app/build.gradle`
+
+### 2. ✅ Room Database Column Name Conflicts (FIXED)
 **Problem**: The `User` entity had nested `@Embedded` annotations without prefixes, which would cause SQLite column name conflicts.
 
 **Fix Applied**: Added prefixes to all `@Embedded` annotations:
@@ -12,7 +27,25 @@
 
 **File**: `app/src/main/java/com/example/userdirectory/model/User.kt`
 
-### 2. ✅ Duplicate ApiService.kt File (FIXED)
+### 3. ✅ Missing gradle.properties (FIXED)
+**Problem**: Build failed with error "android.useAndroidX property is not enabled" because the gradle.properties file was missing.
+
+**Fix Applied**:
+- Created `gradle.properties` file with `android.useAndroidX=true`
+- Added other recommended Gradle settings
+
+**File**: `gradle.properties`
+
+### 4. ✅ Missing Launcher Icons (FIXED)
+**Problem**: Build failed because AndroidManifest.xml referenced launcher icons that didn't exist (`ic_launcher` and `ic_launcher_round`).
+
+**Fix Applied**:
+- Removed icon references from AndroidManifest.xml
+- App will use default system icon
+
+**File**: `app/src/main/AndroidManifest.xml`
+
+### 5. ✅ Duplicate ApiService.kt File (FIXED)
 **Problem**: `ApiService.kt` was located in wrong package directory (`com.example.userdirectory` instead of `com.example/userdirectory`)
 
 **Fix Applied**: 
