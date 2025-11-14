@@ -8,13 +8,11 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.userdirectory.viewmodel.UserViewModel
-import kotlinx.coroutines.launch
 
 @Composable
 fun UserScreen(viewModel: UserViewModel) {
     val users by viewModel.users.collectAsState()
     val searchQuery by viewModel.searchQuery.collectAsState()
-    val coroutineScope = rememberCoroutineScope()
 
     Scaffold(
         topBar = {

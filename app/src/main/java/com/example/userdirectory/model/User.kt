@@ -20,10 +20,10 @@ data class User(
     val phone: String,
     @SerializedName("website")
     val website: String,
-    @Embedded
+    @Embedded(prefix = "address_")
     @SerializedName("address")
     val address: Address,
-    @Embedded
+    @Embedded(prefix = "company_")
     @SerializedName("company")
     val company: Company
 )
@@ -37,7 +37,7 @@ data class Address(
     val city: String,
     @SerializedName("zipcode")
     val zipcode: String,
-    @Embedded
+    @Embedded(prefix = "geo_")
     @SerializedName("geo")
     val geo: Geo
 )
