@@ -1,0 +1,30 @@
+# Android Studio
+.gradle/
+.idea/
+.DS_Store
+build/
+local.properties
+captures/
+*.apk
+*.ap_
+*.aab
+*.iml
+*~
+.externalNativeBuild
+
+# Keystore files
+*.jks
+*.keystore
+
+# Google services
+google-services.json
+
+# Crashlytics
+crashlytics.properties
+crashlytics-build.properties
+
+# Proguard
+proguard/
+
+# KSP
+/app/build/generated/ksp/
